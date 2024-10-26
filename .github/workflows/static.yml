@@ -29,10 +29,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-          - name: npm_install
-            run: |
-              cd public
-              npm install
+      - name: npm_install
+        run: |
+            apt-get install npm
+            cd public
+            npm install 
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
