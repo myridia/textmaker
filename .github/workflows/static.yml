@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: npm_install
         run: |
-            apt-get install npm
+            sudo apt-get install npm
             cd public
             npm install 
       - name: Checkout
