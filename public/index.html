@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="icon" href="favicon.ico" type="img/x-icon" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/jqueryui/jquery-ui.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css ">
+  <link rel="stylesheet" href="node_modules/tacit-css/dist/tacit-css-1.5.1.min.css">
+  <link rel="stylesheet" href="css/app.css">
+
+  <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
+
+  <title>Textmaker</title>
+  </head>
+  <body>
+    <h1><span>Create Text line - Useful to create batch SQL queries</span> <span id="msg"></span></h1>
+    <p>This is a convenience tool to make batch sql queries or text from placeholders.<br/>
+     Put the placeholder data in the column and it will fill it.
+    </p>
+    <div id="content">
+      <form id="form1" name="form1">
+        <fieldset>
+          <label for="query">Query: {}=placeholder example: DELETE FROM table1 WHERE name = '{}' AND  date = '{}';</label><br/>
+          <textarea id="query"></textarea><br/>
+        </fieldset>
+        <fieldset>
+          <label class="value_label">Values:</label>
+          <ul class="columns" id="columns">
+            <li><textarea rows="20" id="c1"></textarea></li>
+            <li><textarea rows="20" id="c2"></textarea></li>
+            <li><textarea rows="20" id="c3"></textarea></li>
+            <li><textarea rows="20" id="c4"></textarea></li>
+          </ul>
+        </fieldset>
+        <fieldset><button type="button" class="btn btn-primary" id="btn_create">Create Lines</button></fieldset>
+      </form>
+      <div>
+        <label for="result">Result:</label><br/>
+        <textarea id="result"></textarea>
+      </div>
+    </div>
+
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/jqueryui/jquery-ui.min.js"></script>
+  <script src="node_modules/jquery-migrate/dist/jquery-migrate.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/bootstrap-waitingfor/build/bootstrap-waitingfor.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>
+
+
+
+

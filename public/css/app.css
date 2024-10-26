@@ -1,0 +1,68 @@
+body {
+  background-color: #eee;
+}
+h1 {
+  font-size: 18px;
+  margin:-30px 0 0 0;
+  padding:0;
+}
+
+h1 #msg {
+  margin-left: 18px;
+  color: #ff0000;
+}
+
+
+
+
+fieldset {
+  margin:0;
+  padding:0;
+}
+
+#query {
+  margin:0 0 3px 0;
+  width: 100% !important;
+  background-color:#eee;
+  font-size: 12px;
+  line-height:1;
+}
+
+#result {
+  margin:0;
+  width: 100% !important;
+  background-color:#eee;
+  font-size: 12px;
+  line-height:1;
+  height:150px;
+}
+
+.columns{
+  margin:0;
+  padding:0;
+}
+
+.columns li{
+  display:inline;
+  marign:0;
+  padding:0;
+  width:1em;
+}
+
+body .columns textarea{
+  background-color:#eee;
+  min-width: 50px;
+  max-width: 200px;
+  font-size: 10px;
+  line-height:1;
+}
+
+label {
+  font-size:14px;
+  margin:0;
+  padding:0;
+}
+
+input[type=submit] {
+  margin:0;
+}

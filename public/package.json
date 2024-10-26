@@ -1,0 +1,22 @@
+{
+  "name": "Textmaker",
+  "description": "Textmaker",
+  "version": "1.0.0",
+  "main": "js/main.js",
+  "author": {
+    "name": "veto",
+    "email": "veto@myridia.com"
+  },
+  "homepage": "https://calantas.org/textmaker",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-waitingfor": "^1.2.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "jquery-migrate": "^3.1.0",
+    "jqueryui": "^1.11.1",
+    "npm": "^6.12.1",
+    "tacit-css": "^1.5.1"
+  }
+}
