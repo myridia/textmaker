@@ -1,0 +1,13 @@
+version: '3'
+services:
+  pm_http:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - ../public:/usr/share/nginx/html/
+      #- ./etc/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_PORT=80
+
