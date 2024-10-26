@@ -32,7 +32,9 @@ jobs:
       - name: npm_install
         run: |
             sudo apt-get install npm
-            ls 
+      - name: install npm_modules
+        run: |
+            ls /
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
