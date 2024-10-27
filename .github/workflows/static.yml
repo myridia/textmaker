@@ -39,7 +39,7 @@ jobs:
         
       - name: install npm_modules
         run: |
-            ls /
+            ls /home
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
