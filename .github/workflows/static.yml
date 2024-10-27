@@ -32,6 +32,11 @@ jobs:
       - name: npm_install
         run: |
             sudo apt-get install npm
+
+
+      - name: Checkout code
+        uses: actions/checkout@v2   
+        
       - name: install npm_modules
         run: |
             ls /
