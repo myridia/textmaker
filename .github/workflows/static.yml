@@ -33,9 +33,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2   
         
-      - name: install list
+      - name: list
         run: |
-            ls /home
+            ls /home/runner
       - name: npm_install
         run: |
             sudo apt-get install npm
