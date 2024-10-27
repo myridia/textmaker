@@ -29,17 +29,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+
+          - name: Checkout code
+        uses: actions/checkout@v2   
+        
+      - name: install list
+        run: |
+            ls /home
       - name: npm_install
         run: |
             sudo apt-get install npm
 
 
-      - name: Checkout code
-        uses: actions/checkout@v2   
-        
-      - name: install npm_modules
-        run: |
-            ls /home
+
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
