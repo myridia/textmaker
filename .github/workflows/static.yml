@@ -35,7 +35,7 @@ jobs:
         
       - name: list
         run: |
-            ls /home/runner
+            ls /home/runner/work/textmaker/public
       - name: npm_install
         run: |
             sudo apt-get install npm
