@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pico.css Off-canvas Right (No JS) — Clickable Backdrop</title>
+
+  <!-- Pico.css -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+  <style>
+    :root{
+      --panel-width: min(360px, 82vw);
+      --transition: 320ms cubic-bezier(.2,.9,.25,1);
+    }
+
+    /* Basic header layout */
+    header.site-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:.5rem 1rem;
+      position:relative;
+      z-index:20;
+    }
+
+    nav.main-nav ul {
+      display:flex;
+      gap:.75rem;
+      margin:0;
+      padding:0;
+      list-style:none;
+      align-items:center;
+    }
+
+    .burger {
+      display:none;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      gap:.5rem;
+      align-items:center;
+      font:inherit;
+      text-decoration:none;
+      color: inherit;
+    }
+    @media (max-width:720px) {
+      nav.main-nav { display:none; }
+      .burger { display:inline-flex; }
+    }
+
+    /* Offcanvas container used as a fragment target.
+       It is fixed and spans the viewport but is inert when not targeted. */
+    #menu {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;   /* ignore clicks when closed */
+      z-index: 999;
+    }
+
+    /* When targeted, enable interactions */
+    #menu:target {
+      pointer-events: auto;
+    }
+
+    /* Backdrop is a real element (anchor) that closes the menu by linking to '#' */
+    .offcanvas__backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity var(--transition) ease;
+      pointer-events: none;
+      z-index: 1000; /* behind the panel */
+      text-decoration: none; /* its an <a>, so remove underline */
+    }
+
+    /* Reveal backdrop only when #menu is targeted */
+    #menu:target .offcanvas__backdrop {
+      opacity: 1;
+      pointer-events: auto; /* clickable to close */
+    }
+
+    /* Panel (slides in from right) */
+    .offcanvas__panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: var(--panel-width);
+      max-width: 100%;
+      background: var(--surface, #fff);
+      box-shadow: -8px 0 28px rgba(0,0,0,0.16);
+      transform: translateX(100%); /* hidden */
+      transition: transform var(--transition);
+      z-index: 1001; /* above backdrop */
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      outline: none;
+    }
+
+    /* Slide panel in when targeted */
+    #menu:target .offcanvas__panel {
+      transform: translateX(0);
+    }
+
+    /* Panel header */
+    .offcanvas__header {
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      padding:1rem;
+      border-bottom:1px solid rgba(0,0,0,0.06);
+      flex: 0 0 auto;
+    }
+
+    .offcanvas__close {
+      margin-left:auto;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      padding:.25rem;
+      text-decoration:none;
+      color: inherit;
+    }
+
+    /* Navigation */
+    .offcanvas__nav {
+      padding:1rem;
+      overflow:auto;
+    }
+    .offcanvas__nav ul {
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    /* Focus styles for keyboard users */
+    .offcanvas__panel a:focus,
+    .offcanvas__panel button:focus {
+      outline: 3px solid Highlight;
+      outline-offset: 2px;
+    }
+
+    /* Prevent the page from jumping when opening the fragment:
+       because the panel is fixed, the viewport doesn't actually scroll,
+       but some browsers may focus the targeted element. Keep smooth behaviour predictable. */
+    html { scroll-behavior: auto; }
+
+    /* Small demo spacing */
+    main.container { padding-top: 1rem; }
+  </style>
+  <script type="module" crossorigin src="/assets/index-BrYVDKfE.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-ovHUwB3A.css">
+</head>
+<body>
+
+<header class="site-header container">
+  <a class="brand" href="#"><strong>MySite</strong></a>
+
+  <nav class="main-nav" role="navigation" aria-label="Primary">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#docs">Docs</a></li>
+      <li><a class="contrast" href="#signup">Sign up</a></li>
+    </ul>
+  </nav>
+
+  <!-- Open menu: navigate to #menu (no JS required) -->
+  <a class="burger" href="#menu" aria-controls="menu" aria-expanded="false">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+    </svg>
+    Menu
+  </a>
+</header>
+
+<!-- Off-canvas wrapper: targeted by fragment identifier "#menu" -->
+<div id="menu" aria-hidden="false">
+
+  <!-- Backdrop is an anchor: clicking navigates away (to '#') and closes the menu -->
+  <a class="offcanvas__backdrop" href="#" aria-label="Close menu"></a>
+
+  <!-- Sliding panel -->
+  <aside class="offcanvas__panel" role="dialog" aria-modal="true" aria-label="Primary navigation" tabindex="-1">
+    <div class="offcanvas__header">
+      <strong>Navigation</strong>
+
+      <!-- Close link also navigates away to '#' -->
+      <a class="offcanvas__close" href="#" aria-label="Close navigation" title="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        </svg>
+      </a>
+    </div>
+
+    <nav class="offcanvas__nav" aria-label="Mobile primary">
+      <ul>
+        <!-- Clicking these links navigates and therefore removes the fragment '#menu',
+             closing the drawer. If you want a link that does NOT close, use a full URL. -->
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="contrast" href="#signup">Sign up</a></li>
+      </ul>
+    </nav>
+  </aside>
+</div>
+
+<main class="container">
+  <h1>Off-canvas right (no JS) — clickable backdrop</h1>
+  <p>This no-JavaScript version opens the right-side drawer when you click "Menu". The backdrop is a real link (href="#"), so clicking it closes the menu reliably. Close is also available via the X button. Navigation links change the fragment (or navigate) which also closes the panel.</p>
+
+  <section id="home" style="height:700px;">
+    <h2>Home</h2>
+    <p>Demo content — open the menu to see it overlay this area.</p>
+  </section>
+
+  <section id="features" style="height:700px;">
+    <h2>Features</h2>
+    <p>Clicking a link that targets another fragment (e.g., "#features") will close the menu automatically because the fragment changes away from "#menu".</p>
+  </section>
+</main>
+
+<!-- Notes:
+ - This approach fixes the "cannot get out" problem by using a real clickable backdrop (<a href="#">)
+   and a close link that navigates away from the fragment. No JavaScript required.
+ - Limitations (no-JS): no Escape-key close, no robust focus-trap, and no guaranteed scroll-lock on all browsers.
+   If you want those, I can add a minimal unobtrusive JS enhancement that keeps the same markup.
+  -->
+    <div id="app"></div>  
+</body>
+</html>
+
+
+
