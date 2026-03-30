@@ -43,3 +43,6 @@ Contributions are welcome! Please feel free to submit pull requests with bug fix
 This project is licensed under the **GNU General Public License v3.0**. See the [LICENSE](LICENSE) file for details.  A copy of the license can be found at [https://www.gnu.org/licenses/gpl-3.0.en.html](https://www.gnu.org/licenses/gpl-3.0.en.html).
 ```
 
+## Add Repository
+git remote add codeberg ssh://git@codeberg.org/veto/textmaker.git
+git push codeberg
