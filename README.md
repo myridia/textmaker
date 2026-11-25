@@ -6,7 +6,7 @@ TextMaker is a client-side JavaScript tool for generating text variations by fil
 
 ## Features
 
-- Up to five value columns
+- Five value columns by default; add more with +
 - `{}` placeholders filled in column order
 - One output line per input row
 - Shorter columns reuse their last value
@@ -91,8 +91,9 @@ public/index.html       main page
 public/js/app.js        generator logic
 public/js/main.js       UI initialization and errors
 public/css/app.css      styles
-test/generator.test.js  generator tests
-dockers/                nginx docker-compose setup
+test/generator.test.js       generator tests
+test/dynamic_columns.test.js dynamic column tests
+dockers/                     nginx docker-compose setup
 ```
 
 ## License

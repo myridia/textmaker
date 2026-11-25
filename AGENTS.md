@@ -33,11 +33,12 @@ Demo at https://textmaker.myridia.com.
 - `public/js/main.js` — app initialization and error display
 - `public/css/app.css` — styles
 - `test/generator.test.js` — generator tests
+- `test/dynamic_columns.test.js` — dynamic column tests
 - `dockers/` — docker-compose setup
 - `pages/public/img/` — logos and screenshots
 
 ## Behavior
-- Reads all five value textareas; blank/whitespace-only lines are ignored
+- Reads all value textareas; five are shown by default and more can be added with +; blank/whitespace-only lines are ignored
 - One output line is generated per populated row across all columns
 - Shorter columns reuse their last value
 - `{}` placeholders are filled in column order

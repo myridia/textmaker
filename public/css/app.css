@@ -126,6 +126,25 @@ textarea {
   background-color: #175fa8;
 }
 
+.btn-add {
+  margin-top: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #175fa8;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #175fa8;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.btn-add:hover {
+  background-color: #175fa8;
+  color: #fff;
+}
+
 .result {
   margin-top: 16px;
 }

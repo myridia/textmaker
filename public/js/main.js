@@ -2,8 +2,21 @@ window.onload = () => {
   "use strict";
 
   let btn = document.querySelector("#btn_create");
+  let addBtn = document.querySelector("#btn_add_column");
   let msg = document.getElementById("msg");
   let result = document.getElementById("result");
+  let columnBox = document.getElementById("columns");
+
+  addBtn.addEventListener("click", () => {
+    let index = columnBox.getElementsByTagName("textarea").length + 1;
+    let area = document.createElement("textarea");
+    area.id = "c" + index;
+    area.rows = 12;
+    area.spellcheck = false;
+    area.placeholder = "Value column " + index;
+    columnBox.appendChild(area);
+    area.focus();
+  });
 
   btn.addEventListener("click", () => {
     msg.textContent = "";
