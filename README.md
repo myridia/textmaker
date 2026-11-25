@@ -14,6 +14,7 @@ TextMaker is a client-side JavaScript tool for generating text variations by fil
 - Single quotes are doubled for SQL string literals
 - Clear error when the query has more placeholders than value columns
 - Runs entirely in the browser; no build step and no npm dependencies
+- Header and footer menus: Home, How to use, Request more features, About, Join for dev
 
 ## Demo
 
@@ -69,9 +70,8 @@ Menu:
 ```text
 1  Check - verify JavaScript and shell syntax
 2  Start - Docker (port 80)
-3  Start - local HTTP server (port 8080)
-4  Stop - Docker services
-5  Clean - this project's Docker state
+3  Stop - Docker services
+4  Clean - this project's Docker state
 0  Exit
 ```
 
@@ -83,15 +83,7 @@ sh ask.d/start_docker.sh
 
 ## Installation
 
-No installation is required. Open `public/index.html` directly in a browser.
-
-Optional local server:
-
-```bash
-./ask.sh
-```
-
-Then choose task `3` and open http://127.0.0.1:8080.
+No installation is required. Open `public/index.html` directly in a browser, or run `./ask.sh` and choose task `2` for Docker.
 
 ## Files
 

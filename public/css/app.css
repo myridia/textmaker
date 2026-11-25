@@ -14,10 +14,59 @@ body {
   font-size: 14px;
 }
 
-main {
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 24px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.site-header .brand {
+  color: #175fa8;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav ul,
+.footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a,
+.footer-nav a,
+.info a {
+  color: #175fa8;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.footer-nav a:hover,
+.info a:hover {
+  text-decoration: underline;
+}
+
+main,
+.info {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
 }
 
 h1 {
@@ -32,9 +81,20 @@ h1 #msg {
   font-weight: normal;
 }
 
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
 p {
   margin: 0 0 16px;
   line-height: 1.4;
+}
+
+ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  line-height: 1.5;
 }
 
 code {
@@ -101,13 +161,29 @@ textarea {
   background-color: #175fa8;
 }
 
-section {
+.result {
   margin-top: 16px;
 }
 
 #result {
   min-height: 180px;
   background-color: #fff;
+}
+
+.info {
+  border-top: 1px solid #ccc;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 12px;
 }
 
 @media (max-width: 800px) {
@@ -117,5 +193,11 @@ section {
 
   .columns textarea {
     min-height: 100px;
+  }
+
+  .site-header,
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }

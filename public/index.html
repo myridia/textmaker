@@ -9,7 +9,28 @@
     <title>TextMaker</title>
   </head>
   <body>
-    <main>
+    <header class="site-header">
+      <a class="brand" href="#home">TextMaker</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#how-to-use">How to use</a></li>
+          <li>
+            <a href="https://github.com/myridia/textmaker/issues/new" target="_blank" rel="noopener noreferrer"
+              >Request more features</a
+            >
+          </li>
+          <li><a href="#about">About</a></li>
+          <li>
+            <a href="https://github.com/myridia/textmaker" target="_blank" rel="noopener noreferrer"
+              >Join for dev</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="home">
       <h1>
         Create Text Line
         <span id="msg" role="alert"></span>
@@ -47,11 +68,74 @@
         <button type="button" class="btn" id="btn_create">Create Lines</button>
       </form>
 
-      <section>
+      <section class="result">
         <label for="result">Result</label>
         <textarea id="result" rows="12" readonly spellcheck="false"></textarea>
       </section>
     </main>
+
+    <section class="info" id="how-to-use">
+      <h2>How to use</h2>
+      <ol>
+        <li>Type a query or text template with <code>{}</code> placeholders.</li>
+        <li>Put values into the five columns, one value per line.</li>
+        <li>Choose <strong>Create Lines</strong>.</li>
+      </ol>
+      <p>
+        Placeholders are filled from columns in order. Each output row uses the
+        matching input row from every column. If a column is shorter, its last
+        value is reused. Blank lines are ignored and single quotes are doubled
+        for SQL literals.
+      </p>
+    </section>
+
+    <section class="info" id="request">
+      <h2>Request more features</h2>
+      <p>
+        Need another column, a different placeholder style, saved presets, or
+        something else? Open a feature request on GitHub:
+        <a href="https://github.com/myridia/textmaker/issues/new" target="_blank" rel="noopener noreferrer"
+          >github.com/myridia/textmaker/issues</a
+        >.
+      </p>
+    </section>
+
+    <section class="info" id="about">
+      <h2>About</h2>
+      <p>
+        TextMaker is a small client-side tool for generating batch SQL queries
+        and repeated text. It runs entirely in the browser, needs no build step,
+        and is released under GPL-3.0.
+      </p>
+      <p>
+        Developers are welcome at
+        <a href="https://github.com/myridia/textmaker" target="_blank" rel="noopener noreferrer"
+          >github.com/myridia/textmaker</a
+        >.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <span>© 2026 Myridia — TextMaker</span>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#how-to-use">How to use</a></li>
+          <li>
+            <a href="https://github.com/myridia/textmaker/issues/new" target="_blank" rel="noopener noreferrer"
+              >Request more features</a
+            >
+          </li>
+          <li><a href="#about">About</a></li>
+          <li>
+            <a href="https://github.com/myridia/textmaker" target="_blank" rel="noopener noreferrer"
+              >Join for dev</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <span>GPL-3.0</span>
+    </footer>
 
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>

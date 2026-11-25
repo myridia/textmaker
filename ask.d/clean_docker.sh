@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# id: 5
+# id: 4
 # group: MAINTENANCE
 # desc: Clean - this project's Docker state
 

@@ -24,9 +24,8 @@ Demo at https://textmaker.myridia.com.
 `./ask.sh` builds its menu from `ask.d/*.sh` — each script carries `# id:`, `# group:`, and `# desc:` headers. Tasks can also be run directly: `sh ask.d/start_docker.sh`.
 - 1 Check — verify JavaScript and shell syntax
 - 2 Start — Docker on port 80
-- 3 Start — local HTTP server on port 8080
-- 4 Stop — Docker services
-- 5 Clean — this project's Docker state
+- 3 Stop — Docker services
+- 4 Clean — this project's Docker state
 
 ## Structure
 - `public/index.html` — main app page
@@ -45,6 +44,7 @@ Demo at https://textmaker.myridia.com.
 - Single quotes are doubled for SQL string literals
 - A query with more `{}` placeholders than value columns shows an error
 - A query with no `{}` placeholders is emitted once
+- Header and footer menus link to Home, How to use, Request more features, About, and the GitHub dev repo
 
 ## Conventions
 - No comments in code unless asked.
