@@ -24,6 +24,33 @@ The demo allows you to experiment with different input data and see how TextMake
 # ![How it works](pages/public/img/demo.gif) 
 
 
+## Task Runner
+
+Run:
+
+```bash
+./ask.sh
+```
+
+Menu:
+
+```text
+1  Setup - install npm dependencies
+2  Start - plain JS via Docker (port 80)
+3  Start - local HTTP server (port 8080)
+4  Start - Vue dev server
+5  Build - Vue production bundle
+6  Stop - Docker services
+7  Clean - this project's Docker state
+0  Exit
+```
+
+Individual tasks can be run directly, for example:
+
+```bash
+sh ask.d/start_docker.sh
+```
+
 ## Installation
 
 Since this is a client-side JavaScript project, there's no installation required in the traditional sense. Simply include the necessary files in your HTML.
