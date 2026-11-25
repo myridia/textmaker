@@ -1,3 +1,5 @@
+<img src="textmaker.svg" alt="textmaker" width="120">
+
 # ![TextMaker](pages/public/img/icon_192x192.png) TextMaker
 
 TextMaker is a JavaScript project that allows you to sample and combine text lines from up to five columns of data. It's designed to help generate variations of text based on a structured input.
