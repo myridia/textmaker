@@ -44,7 +44,7 @@ Demo at https://textmaker.myridia.com.
 - Single quotes are doubled for SQL string literals
 - A query with more `{}` placeholders than value columns shows an error
 - A query with no `{}` placeholders is emitted once
-- Header and footer menus link to Home, How to use, Request more features, About, and the GitHub dev repo
+- Single page with a simple footer showing copyright and license
 
 ## Conventions
 - No comments in code unless asked.

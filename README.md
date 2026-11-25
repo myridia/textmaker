@@ -14,7 +14,6 @@ TextMaker is a client-side JavaScript tool for generating text variations by fil
 - Single quotes are doubled for SQL string literals
 - Clear error when the query has more placeholders than value columns
 - Runs entirely in the browser; no build step and no npm dependencies
-- Header and footer menus: Home, How to use, Request more features, About, Join for dev
 
 ## Demo
 

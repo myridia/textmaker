@@ -14,50 +14,6 @@ body {
   font-size: 14px;
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 24px;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
-}
-
-.site-header .brand {
-  color: #175fa8;
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.site-nav ul,
-.footer-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-nav a,
-.footer-nav a,
-.info a {
-  color: #175fa8;
-  text-decoration: none;
-}
-
-.site-nav a:hover,
-.footer-nav a:hover,
-.info a:hover {
-  text-decoration: underline;
-}
-
 main,
 .info {
   max-width: 1200px;
@@ -66,7 +22,7 @@ main,
 }
 
 section[id] {
-  scroll-margin-top: 72px;
+  scroll-margin-top: 16px;
 }
 
 h1 {
@@ -88,7 +44,7 @@ h2 {
 
 p {
   margin: 0 0 16px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 ol {
@@ -99,6 +55,15 @@ ol {
 
 code {
   font-family: "Courier New", monospace;
+}
+
+.info a {
+  color: #175fa8;
+  text-decoration: none;
+}
+
+.info a:hover {
+  text-decoration: underline;
 }
 
 form {
@@ -193,11 +158,5 @@ textarea {
 
   .columns textarea {
     min-height: 100px;
-  }
-
-  .site-header,
-  .site-footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }
