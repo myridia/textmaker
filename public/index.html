@@ -20,6 +20,11 @@
       </p>
 
       <form id="form1" name="form1">
+        <div class="table-row">
+          <label for="table_name">Table</label>
+          <input id="table_name" type="text" value="table" spellcheck="false" />
+        </div>
+
         <div>
           <label for="query">
             Query: <code>{}</code> = placeholder, for example:
@@ -33,14 +38,38 @@
           ></textarea>
         </div>
 
+        <div class="upload">
+          <label for="xlsx_file">Import XLSX</label>
+          <input
+            id="xlsx_file"
+            type="file"
+            accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          />
+        </div>
+
         <fieldset>
           <legend>Values</legend>
           <div class="columns" id="columns">
-            <textarea id="c1" rows="12" spellcheck="false"></textarea>
-            <textarea id="c2" rows="12" spellcheck="false"></textarea>
-            <textarea id="c3" rows="12" spellcheck="false"></textarea>
-            <textarea id="c4" rows="12" spellcheck="false"></textarea>
-            <textarea id="c5" rows="12" spellcheck="false"></textarea>
+            <div class="column">
+              <textarea id="c1" rows="12" spellcheck="false"></textarea>
+              <button type="button" class="btn-remove" aria-label="Remove value column 1" title="Remove column">×</button>
+            </div>
+            <div class="column">
+              <textarea id="c2" rows="12" spellcheck="false"></textarea>
+              <button type="button" class="btn-remove" aria-label="Remove value column 2" title="Remove column">×</button>
+            </div>
+            <div class="column">
+              <textarea id="c3" rows="12" spellcheck="false"></textarea>
+              <button type="button" class="btn-remove" aria-label="Remove value column 3" title="Remove column">×</button>
+            </div>
+            <div class="column">
+              <textarea id="c4" rows="12" spellcheck="false"></textarea>
+              <button type="button" class="btn-remove" aria-label="Remove value column 4" title="Remove column">×</button>
+            </div>
+            <div class="column">
+              <textarea id="c5" rows="12" spellcheck="false"></textarea>
+              <button type="button" class="btn-remove" aria-label="Remove value column 5" title="Remove column">×</button>
+            </div>
           </div>
           <button
             type="button"
@@ -66,7 +95,7 @@
       <h2>How to use</h2>
       <ol>
         <li>Type a query or text template with <code>{}</code> placeholders.</li>
-        <li>Put values into the columns, one value per line. Use + for more.</li>
+        <li>Put values into the columns, one value per line. Use + to add and × to remove.</li>
         <li>Choose <strong>Create Lines</strong>.</li>
       </ol>
       <p>
@@ -115,6 +144,7 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/xlsx.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

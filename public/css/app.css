@@ -37,6 +37,10 @@ h1 #msg {
   font-weight: normal;
 }
 
+h1 #msg.ok {
+  color: #2e7d32;
+}
+
 h2 {
   margin: 0 0 12px;
   font-size: 18px;
@@ -69,6 +73,41 @@ code {
 form {
   display: grid;
   gap: 16px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-row label {
+  margin: 0;
+}
+
+.table-row input {
+  width: 320px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #222;
+  font: 12px/1.4 "Courier New", monospace;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload label {
+  margin: 0;
+}
+
+.upload input {
+  font: inherit;
 }
 
 fieldset {
@@ -107,8 +146,13 @@ textarea {
   gap: 8px;
 }
 
+.column {
+  position: relative;
+}
+
 .columns textarea {
   min-height: 260px;
+  padding-right: 28px;
 }
 
 .btn {
@@ -142,6 +186,29 @@ textarea {
 
 .btn-add:hover {
   background-color: #175fa8;
+  color: #fff;
+}
+
+.btn-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #666;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.btn-remove:hover {
+  border-color: #c62828;
+  background-color: #c62828;
   color: #fff;
 }
 

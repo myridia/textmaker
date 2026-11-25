@@ -6,13 +6,15 @@ TextMaker is a client-side JavaScript tool for generating text variations by fil
 
 ## Features
 
-- Five value columns by default; add more with +
+- Five value columns by default; add with + and remove with ×
+- XLSX import: first row headers, `query` header for the template, other headers for value columns
 - `{}` placeholders filled in column order
 - One output line per input row
 - Shorter columns reuse their last value
 - Blank input lines are ignored
 - Single quotes are doubled for SQL string literals
 - Clear error when the query has more placeholders than value columns
+- Table field defaults to `table`; query auto-fills `UPDATE <table> SET ...;`
 - Runs entirely in the browser; no build step and no npm dependencies
 
 ## Demo
@@ -55,6 +57,19 @@ Rules:
 - single quotes in values are doubled automatically
 - extra `{}` placeholders show an error in the red message area
 - a query without `{}` is emitted once
+- the query starts as `UPDATE <table> SET a='{}',b='{}';`; every column is included in SET and no WHERE clause is added automatically
+
+## XLSX import
+
+Upload an `.xlsx` file. TextMaker scans the worksheets and uses the first one with a usable header row:
+
+```text
+Query                                                    | name  | date
+DELETE FROM t WHERE n = '{}' AND d = '{}';               | Alice | 2026-11-25
+                                                         | Bob   | 2026-11-26
+```
+
+The header named `query` supplies the query template and is not imported as a value column. `sql`, `template`, `text`, `statement`, and `command` are accepted too. If no query header exists, every header stays as a value column and the current Query box is kept. Extra columns are created automatically. Parsing happens entirely in the browser with no npm dependencies.
 
 ## Task Runner
 
@@ -87,12 +102,14 @@ No installation is required. Open `public/index.html` directly in a browser, or 
 ## Files
 
 ```text
-public/index.html       main page
-public/js/app.js        generator logic
-public/js/main.js       UI initialization and errors
-public/css/app.css      styles
+public/index.html            main page
+public/js/app.js             generator logic
+public/js/main.js            UI initialization, import, and errors
+public/js/xlsx.js            browser-side XLSX parser
+public/css/app.css           styles
 test/generator.test.js       generator tests
 test/dynamic_columns.test.js dynamic column tests
+test/xlsx.test.js            XLSX parser tests
 dockers/                     nginx docker-compose setup
 ```
 
