@@ -1,68 +1,248 @@
-body {
-  background-color: #eee;
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eee;
+  color: #222;
+  font-size: 14px;
+}
+
+main,
+.info {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+section[id] {
+  scroll-margin-top: 16px;
+}
+
 h1 {
-  font-size: 18px;
-  margin:-30px 0 0 0;
-  padding:0;
+  margin: 0 0 12px;
+  font-size: 20px;
 }
 
 h1 #msg {
-  margin-left: 18px;
-  color: #ff0000;
+  margin-left: 12px;
+  color: #c62828;
+  font-size: 13px;
+  font-weight: normal;
 }
 
+h1 #msg.ok {
+  color: #2e7d32;
+}
 
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
 
+p {
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  line-height: 1.5;
+}
+
+code {
+  font-family: "Courier New", monospace;
+}
+
+.info a {
+  color: #175fa8;
+  text-decoration: none;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-row label {
+  margin: 0;
+}
+
+.table-row input {
+  width: 320px;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #222;
+  font: 12px/1.4 "Courier New", monospace;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload label {
+  margin: 0;
+}
+
+.upload input {
+  font: inherit;
+}
 
 fieldset {
-  margin:0;
-  padding:0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-#query {
-  margin:0 0 3px 0;
-  width: 100% !important;
-  background-color:#eee;
-  font-size: 12px;
-  line-height:1;
-}
-
-#result {
-  margin:0;
-  width: 100% !important;
-  background-color:#eee;
-  font-size: 12px;
-  line-height:1;
-  height:150px;
-}
-
-.columns{
-  margin:0;
-  padding:0;
-}
-
-.columns li{
-  display:inline;
-  marign:0;
-  padding:0;
-  width:1em;
-}
-
-body .columns textarea{
-  background-color:#eee;
-  min-width: 50px;
-  max-width: 200px;
-  font-size: 10px;
-  line-height:1;
+legend {
+  margin-bottom: 8px;
+  padding: 0;
+  font-weight: 600;
 }
 
 label {
-  font-size:14px;
-  margin:0;
-  padding:0;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
-input[type=submit] {
-  margin:0;
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #222;
+  font: 12px/1.4 "Courier New", monospace;
+  resize: vertical;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.column {
+  position: relative;
+}
+
+.columns textarea {
+  min-height: 260px;
+  padding-right: 28px;
+}
+
+.btn {
+  width: 160px;
+  padding: 8px 12px;
+  border: 1px solid #175fa8;
+  border-radius: 4px;
+  background-color: #1b6ec2;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #175fa8;
+}
+
+.btn-add {
+  margin-top: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #175fa8;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #175fa8;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.btn-add:hover {
+  background-color: #175fa8;
+  color: #fff;
+}
+
+.btn-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #666;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.btn-remove:hover {
+  border-color: #c62828;
+  background-color: #c62828;
+  color: #fff;
+}
+
+.result {
+  margin-top: 16px;
+}
+
+#result {
+  min-height: 180px;
+  background-color: #fff;
+}
+
+.info {
+  border-top: 1px solid #ccc;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .columns textarea {
+    min-height: 100px;
+  }
 }

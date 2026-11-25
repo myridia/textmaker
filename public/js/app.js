@@ -1,70 +1,76 @@
-function escape_values(columns) {
-  for (let i = 0; i < columns.length; i++) {
-    for (let ii = 0; ii < columns[i].length; ii++) {
-      let s = columns[i][ii];
-      if (s.indexOf("'") > -1) {
-        s = s.replace(/'/g, "''");
-        columns[i][ii] = s;
-      }
-    }
-  }
-  return columns;
-}
-
-function make_queries(query, column) {
-  //templating the columns into the placeholder
-  let n = query.split("{}").length - 1;
-  let queries = [];
-  for (let i = 0; i < column.length; i++) {
-    queries[i] = query;
-  }
-
-  for (let i = 0; i < n; i++) {
-    for (let ii = 0; ii < column.length; ii++) {
-      queries[ii] = queries[ii].replace("{}", column[ii][i]);
-    }
-  }
-  return queries;
+function split_lines(value) {
+  return value
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
 }
 
 function get_columns() {
-  //getting the filled columes and send them back as array
-  let c = [];
-  let columns = document.getElementById("columns");
-  let e = columns.getElementsByTagName("textarea");
-  for (let i = 0; i < e.length; i++) {
-    let arr = e[i].value.split("\n");
-    // let arr = e[i].value.match(/[^\r\n]+/g);
-    if (arr.length > 1) {
-      c[i] = arr;
+  let container = document.getElementById("columns");
+  let areas = container.getElementsByTagName("textarea");
+  let columns = [];
+
+  for (let i = 0; i < areas.length; i++) {
+    let lines = split_lines(areas[i].value);
+    if (lines.length > 0) {
+      columns.push(lines);
     }
   }
-  return c;
+
+  return columns;
 }
 
-function unite_columns(c) {
-  //take the smallest column and create one master column with other columns as nested array
-  if (c.length == 0) return;
+function escape_values(columns) {
+  return columns.map((column) =>
+    column.map((value) => value.replace(/'/g, "''")),
+  );
+}
 
-  let rows = c[0].length;
-  for (var i = 0; i < c.length; i++) {
-    if (c[i].length < rows) //get colum with the least rows
-    {
-      rows = c[i].length;
+function unite_columns(columns) {
+  if (columns.length === 0) {
+    return [];
+  }
+
+  let rows = 0;
+  for (let i = 0; i < columns.length; i++) {
+    if (columns[i].length > rows) {
+      rows = columns[i].length;
     }
   }
 
-  let columns = [];
+  let combined = [];
   for (let i = 0; i < rows; i++) {
-    columns[i] = [];
+    combined[i] = columns.map((column) =>
+      column[Math.min(i, column.length - 1)],
+    );
   }
 
-  for (let i = 0; i < c.length; i++) {
-    for (let ii = 0; ii < c[i].length; ii++) {
-      if (ii < rows) {
-        columns[ii].push(c[i][ii]);
-      }
-    }
+  return combined;
+}
+
+function make_queries(query, column) {
+  let placeholders = (query.match(/\{\}/g) || []).length;
+
+  if (placeholders === 0) {
+    return [query];
   }
-  return columns;
+  if (column.length === 0) {
+    return [];
+  }
+
+  let available = column[0].length;
+  if (placeholders > available) {
+    throw new Error(
+      "Query has " +
+        placeholders +
+        " placeholders but only " +
+        available +
+        " value columns are available.",
+    );
+  }
+
+  return column.map((values) => {
+    let index = 0;
+    return query.replace(/\{\}/g, () => values[index++]);
+  });
 }
