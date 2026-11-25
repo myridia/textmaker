@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# id: 6
+# id: 4
 # group: MAINTENANCE
 # desc: Stop - Docker services
 

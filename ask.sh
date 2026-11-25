@@ -16,9 +16,8 @@ group_rank() {
   case "$1" in
     SETUP) printf '1' ;;
     RUN) printf '2' ;;
-    BUILD) printf '3' ;;
-    MAINTENANCE) printf '4' ;;
-    *) printf '5' ;;
+    MAINTENANCE) printf '3' ;;
+    *) printf '4' ;;
   esac
 }
 
